@@ -22,8 +22,12 @@ name: Home
 path: home
 
 ## 视频播放页
-name: Video
-path: video
+name: VideoInio
+path: video/videoinio
+
+## 往期番剧页
+name: Collection
+path: video/collection
 
 ## 搜索页
 name: Search
@@ -43,7 +47,7 @@ path: pictureClass
 
 ## 插图详情页
 name: Detail
-path: detail
+path: atlas/detail
 
 ## P淘商城页
 name: Taobao
@@ -64,5 +68,5 @@ path: forget
 name: User
 path: user
 # 二、需要公用组件
-## 我的
-name：my
+## 头部导航
+name：HeaderMenu
