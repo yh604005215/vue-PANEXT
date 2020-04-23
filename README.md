@@ -18,51 +18,51 @@ npm run lint
 # 一、项目起步搭建路由
 ## 分享页面路由结构
 ## 首页
-name: home
+name: Home
 path: home
 
 ## 视频播放页
-name: video
+name: Video
 path: video
 
 ## 搜索页
-name: search
+name: Search
 path: search
 
 ## 插图精选页
-name: piclndex
+name: Piclndex
 path: piclndex
-### 插图精选页分类路由
-1. 女性向
-2. 综合向
-3. 宅男向
 
 ## 动漫分类页
-name: videoClass
+name: VideoClass
 path: videoclass
 
 ## 插图分类页
-name: pictureClass
+name: PictureClass
 path: pictureClass
 
 ## 插图详情页
-name: detail
+name: Detail
 path: detail
 
 ## P淘商城页
-name: taobao
+name: Taobao
 path: taobao
 
 ##  登录页
-name: login
+name: Login
 path: login
 
 ## 注册页
-name: register
+name: Register
 path: register
 ## 找回密码页
-name：forget
+name：Forget
 path: forget
+
+## 个人中心页
+name: User
+path: user
 # 二、需要公用组件
 ## 我的
 name：my
