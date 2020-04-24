@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '../views/Home'
-import VideoInfo from '../views/Video/VideoInio'
-import Search from '../views/Search'
-import Piclndex from '../views/Piclndex'
-import VideoClass from '../views/VideoClass'
-import PictureClass from '../views/PictureClass'
-import Detail from '../views/Detail'
-import Login from '../views/Login'
-import Register from '../views/Register'
-import Forget from '../views/Forget'
-import User from '../views/User'
-import Taobao from '../views/Taobao'
-import Collection from '../views/Video/Collection'
+const Home = () => import('../views/Home')
+const VideoInfo = () => import('../views/Video/VideoInio')
+const Search = () => import('../views/Search')
+const Piclndex = () => import('../views/Piclndex')
+const VideoClass = () => import('../views/VideoClass')
+const PictureClass = () => import('../views/PictureClass')
+const Detail = () => import('../views/Detail')
+const Login = () => import('../views/Login')
+const Register = () => import('../views/Register')
+const Forget = () => import('../views/Forget')
+const User = () => import('../views/User')
+const Taobao = () => import('../views/Taobao')
+const Collection = () => import('../views/Video/Collection')
 
 Vue.use(VueRouter)
 

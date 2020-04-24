@@ -42,17 +42,12 @@ export default {
       default: false
     }
   }
-  // methods: {
-  //   onDome () {
-  //     $Notice('网络异常，请稍后重试')
-  //   }
-  // }
 }
 </script>
 
 <style lang="scss" scoped>
 .header-menu {
-  height: 51px;
+  height: 54px;
   display: flex;
   position: relative;
   .header-left{
@@ -68,11 +63,13 @@ export default {
 
   .item {
     text-align: center;
+    padding-top: 3px;
     i {
       color: rgb(12, 124, 201);
     }
     p {
       font-size: 12px;
+      padding-top: 3px;
     }
   }
 }
