@@ -29,14 +29,14 @@ export const getPiclndex = () => {
 }
 
 // 获取插图
-export const getEikon = (orientation) => {
+export const getEikon = (orientation, page) => {
   return request({
     url: '/hqcc/apiH5.php?',
     method: 'GET',
     params: {
       r: 'index/indexatlaslist',
-      page: 1,
-      orientation: orientation,
+      page,
+      orientation,
       userId: '',
       userPKey: 1587806628000,
       userPMain: 66,

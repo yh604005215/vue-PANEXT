@@ -21,11 +21,16 @@
 <script>
 import Vue from 'vue'
 import { Col, Row } from 'vant'
-import { getEikon } from '@/api/getData'
+
 Vue.use(Col)
 Vue.use(Row)
 export default {
   name: 'Author',
+  data () {
+    return {
+      type: 1
+    }
+  },
   props: {
     author: {
       type: Array,
@@ -33,11 +38,6 @@ export default {
         return []
       }
     }
-  },
-  created () {
-    getEikon(1).then(res => {
-      this.$emit('getData', res)
-    })
   }
 }
 </script>

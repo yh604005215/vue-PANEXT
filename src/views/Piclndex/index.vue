@@ -9,7 +9,7 @@
       </div>
       <Author :author="author" v-if="author"></Author>
       <div class="ivu-divider ivu-divider-horizontal ivu-divider-dashed"></div>
-      <Eikon />
+      <Eikon :type="type" />
     </div>
   </div>
 </template>
@@ -29,7 +29,8 @@ export default {
   data () {
     return {
       banner: [],
-      author: []
+      author: [],
+      type: 1
     }
   },
   methods: {
@@ -42,6 +43,9 @@ export default {
   },
   created () {
     this.getPiclndex()
+    this.$on('switch', val => {
+      this.type = val
+    })
   }
 }
 </script>
