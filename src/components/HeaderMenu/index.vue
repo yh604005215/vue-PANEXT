@@ -2,6 +2,12 @@
   <header class="header-menu">
     <div class="header-left">
       <div class="logo" v-if="logo"></div>
+      <template v-else>
+        <div class="back"  @click="onBack">
+          <i class="ivu-icon ivu-icon-ios-arrow-back" style="font-size: 24px;"></i>
+        </div>
+        <div class="title"><slot /></div>
+      </template>
     </div>
     <div class="item col item_top ivu-col ivu-col-span-3">
       <router-link to="/search">
@@ -41,6 +47,11 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  methods: {
+    onBack () {
+      this.$router.go(-1)
+    }
   }
 }
 </script>
@@ -51,6 +62,7 @@ export default {
   display: flex;
   position: relative;
   .header-left{
+    display: flex;
     flex: 1;
     .logo {
       width: 89px;
@@ -58,6 +70,16 @@ export default {
       background: url('~@/assets/img/logo.png') no-repeat;
       background-size: 100%;
       margin: 11px 0 0 3px;
+    }
+    .back,.title {
+      padding: 11px 6px 3px;
+      font-size: 16px;
+    }
+    .title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+      top: 3px
     }
   }
 

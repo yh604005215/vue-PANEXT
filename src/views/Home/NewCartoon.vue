@@ -80,7 +80,7 @@ export default {
       font-size: 12px;
       line-height: 17px;
       margin-bottom: 2px;
-       height: 34px;
+      height: 34px;
     }
   }
   .van-col--8 {

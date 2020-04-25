@@ -1,13 +1,71 @@
 <template>
-  <h1>插图精选页</h1>
+  <div class="panext-piclndex">
+    <HeaderMenu>{{ '插图精选' }}</HeaderMenu>
+    <div class="main">
+      <div class="banner">
+        <router-link to="/rank">
+          <img :src="banner.picUri" alt="">
+        </router-link>
+      </div>
+      <Author :author="author" v-if="author"></Author>
+      <div class="ivu-divider ivu-divider-horizontal ivu-divider-dashed"></div>
+      <Eikon />
+    </div>
+  </div>
 </template>
 
 <script>
+import HeaderMenu from '@/components/HeaderMenu'
+import { getPiclndex } from '@/api/getData'
+import Author from './Author'
+import Eikon from './Eikon'
 export default {
-  name: 'Piclndex'
+  name: 'Piclndex',
+  components: {
+    HeaderMenu,
+    Author,
+    Eikon
+  },
+  data () {
+    return {
+      banner: [],
+      author: []
+    }
+  },
+  methods: {
+    getPiclndex () {
+      getPiclndex().then(res => {
+        this.banner = res.specialData.banner[0]
+        this.author = res.specialData.painterData
+      })
+    }
+  },
+  created () {
+    this.getPiclndex()
+  }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.panext-piclndex{
+  display: flex;
+  flex-flow: column;
+  .main {
+    flex: 1;
+    .banner  {
+      height: 117px;
+      padding: 0 5px;
+      img  {
+        height: 117px;
+        width: 100%;
+        border-radius: 5px;
+      }
+    }
+    .van-col {
+      font-size: 14px;
+      color: #757575;
+    }
+  }
+}
 
 </style>

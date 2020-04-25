@@ -1,10 +1,10 @@
 <template>
-  <h1>视频播放页</h1>
+  <h1>画师排行榜页</h1>
 </template>
 
 <script>
 export default {
-  name: 'Video'
+  name: 'Rank'
 }
 </script>
 

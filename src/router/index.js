@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 const Home = () => import('../views/Home')
-const VideoInfo = () => import('../views/Video/VideoInio')
+const VideoInfo = () => import('../views/Video/VideoInfo')
 const Search = () => import('../views/Search')
 const Piclndex = () => import('../views/Piclndex')
 const VideoClass = () => import('../views/VideoClass')
@@ -14,6 +14,7 @@ const Forget = () => import('../views/Forget')
 const User = () => import('../views/User')
 const Taobao = () => import('../views/Taobao')
 const Collection = () => import('../views/Video/Collection')
+const Rank = () => import('../views/Rank')
 
 Vue.use(VueRouter)
 
@@ -32,6 +33,7 @@ const router = new VueRouter({
     { path: '/forget', component: Forget },
     { path: '/user', component: User },
     { path: '/video/collection', component: Collection },
+    { path: './rank', component: Rank },
     { path: '/', redirect: '/home' }
   ]
 })

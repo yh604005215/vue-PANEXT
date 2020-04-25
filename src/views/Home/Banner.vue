@@ -1,6 +1,6 @@
 <template>
   <section class="banner"  v-if="banner.length > 0">
-    <van-swipe class="my-swipe" :autoplay="3000"  @change="onChange">
+    <van-swipe class="my-swipe" :autoplay="autoplay"  @change="onChange">
       <van-swipe-item v-for="item in banner" :key="item.bannerImg">
         <router-link :to="item.h5Url">
           <img :src="item.picUrl" alt="">
@@ -27,7 +27,7 @@ import { Swipe, SwipeItem } from 'vant'
 Vue.use(Swipe)
 Vue.use(SwipeItem)
 export default {
-  name: 'banner',
+  name: 'YhBanner',
   data () {
     return {
       current: 0
@@ -39,6 +39,10 @@ export default {
       default () {
         return []
       }
+    },
+    autoplay: {
+      type: Number,
+      default: 3000
     }
   },
   methods: {
