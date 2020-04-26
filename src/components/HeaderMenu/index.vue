@@ -31,7 +31,6 @@
 
 <script>
 import MyMenu from './MyMenu'
-// import { $Notice } from 'view-design'
 export default {
   name: 'HeaderMenu',
   components: {
@@ -88,6 +87,7 @@ export default {
     padding-top: 3px;
     i {
       color: rgb(12, 124, 201);
+      font-size: 24px;
     }
     p {
       font-size: 12px;

@@ -1,9 +1,15 @@
 <template>
   <section>
     <van-row type="flex" justify="center">
-      <van-col class="tab" span="8"><section class="she">女性向</section></van-col>
-      <van-col class="tab" span="8"><section class="synthesize">综合向</section></van-col>
-      <van-col class="tab" span="8"><section class="otaku">宅男向</section></van-col>
+      <van-col class="tab" @click="onType(3)" span="8">
+        <section class="she" :class="{ active : type == 3}" >女性向</section>
+      </van-col>
+      <van-col class="tab" @click="onType(1)" span="8">
+        <section class="synthesize"  :class="{ active : type == 1 }" >综合向</section>
+      </van-col>
+      <van-col class="tab"   @click="onType(2)" span="8">
+        <section :class="{ active : type == 2 }" class="otaku">宅男向</section>
+      </van-col>
     </van-row>
     <van-row>
       <van-col span="5" v-for="item in author" :key="item.id" class="author">
@@ -11,8 +17,10 @@
         <span class="author-text">{{ item.nick }}</span>
       </van-col>
       <van-col span="4" class="author">
-        <img src="@/assets/icon/classify.jpg" class="classify-avatar">
-        <span class="classify-text">{{ '分类' }}</span>
+        <router-link to="/picture-class">
+          <img src="@/assets/icon/classify.jpg" class="classify-avatar">
+          <span class="classify-text">{{ '分类' }}</span>
+        </router-link>
       </van-col>
     </van-row>
   </section>
@@ -21,15 +29,13 @@
 <script>
 import Vue from 'vue'
 import { Col, Row } from 'vant'
-
+import { mapMutations, mapState } from 'vuex'
 Vue.use(Col)
 Vue.use(Row)
 export default {
   name: 'Author',
-  data () {
-    return {
-      type: 1
-    }
+  computed: {
+    ...mapState('moduelA', ['type'])
   },
   props: {
     author: {
@@ -37,6 +43,12 @@ export default {
       default () {
         return []
       }
+    }
+  },
+  methods: {
+    ...mapMutations('moduelA', ['SET_TYPE']),
+    onType (val) {
+      this.SET_TYPE(val)
     }
   }
 }
@@ -58,9 +70,10 @@ export default {
     justify-content: center;
     border-radius: 5px;
     box-shadow: 10px;
-    &:hover  {
-      box-shadow: 0 1px 6px rgba(0,0,0,.2);
-    }
+
+  }
+  .active  {
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
   }
   .she {
     background: rgb(255, 210, 209);

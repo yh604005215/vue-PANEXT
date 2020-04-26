@@ -9,7 +9,7 @@
       </div>
       <Author :author="author" v-if="author"></Author>
       <div class="ivu-divider ivu-divider-horizontal ivu-divider-dashed"></div>
-      <Eikon :type="type" />
+      <Eikon />
     </div>
   </div>
 </template>
@@ -29,8 +29,7 @@ export default {
   data () {
     return {
       banner: [],
-      author: [],
-      type: 1
+      author: []
     }
   },
   methods: {
@@ -56,6 +55,7 @@ export default {
   flex-flow: column;
   .main {
     flex: 1;
+    overflow-y: auto;
     .banner  {
       height: 117px;
       padding: 0 5px;

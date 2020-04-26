@@ -29,19 +29,19 @@ export const getPiclndex = () => {
 }
 
 // 获取插图
-export const getEikon = (orientation, page) => {
+export const getEikon = (option) => {
   return request({
     url: '/hqcc/apiH5.php?',
     method: 'GET',
     params: {
       r: 'index/indexatlaslist',
-      page,
-      orientation,
+      page: option.page,
+      orientation: option.type,
       userId: '',
-      userPKey: 1587806628000,
-      userPMain: 66,
-      userPBase: 188687656,
-      userUser: 'potnrey88sauB86'
+      userPKey: option.userPKey,
+      userPMain: option.userPMain,
+      userPBase: option.userPBase,
+      userUser: option.userUser
     }
   })
 }

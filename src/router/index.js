@@ -33,7 +33,7 @@ const router = new VueRouter({
     { path: '/forget', component: Forget },
     { path: '/user', component: User },
     { path: '/video/collection', component: Collection },
-    { path: './rank', component: Rank },
+    { path: '/rank', component: Rank },
     { path: '/', redirect: '/home' }
   ]
 })

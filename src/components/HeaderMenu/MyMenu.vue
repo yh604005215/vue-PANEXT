@@ -67,13 +67,16 @@ export default {
   position: absolute;
   right: 0;
   left: 0;
-  top: 51px;
+  top: 54px;
   z-index: 100;
   background: #fff;
   p {
     color: #969696;
     font-size: 12px;
     line-height: 18px;
+  }
+  i {
+    font-size: 24px;
   }
   .icon-qq {
     height: 24px;

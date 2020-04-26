@@ -5,7 +5,14 @@
     v-model="loading"
     :finished="finished"
     finished-text="没有更多了"
-    @load="getEikon(type, page)">
+    @load="getEikon({
+      type,
+      page,
+      userPKey,
+      userPMain,
+      userPBase,
+      userUser
+    })">
       <div v-for="item in eikonLeft" :key="item.id" class="item">
         <div class="img-box">
           <img v-lazy="item.coverUrl"
@@ -23,8 +30,7 @@
     <van-list
     class="list"
     v-model="loading"
-    :finished="finished"
-    finished-text="没有更多了">
+    :finished="finished">
       <div v-for="item in eikonRight" :key="item.id" class="item">
           <div class="img-box">
             <img v-lazy="item.coverUrl" :style="{'width': '100%','min-height': '100px' }">
@@ -45,7 +51,7 @@
 import Vue from 'vue'
 import { Lazyload, List } from 'vant'
 import { getEikon } from '@/api/getData'
-
+import { mapState } from 'vuex'
 Vue.use(List)
 Vue.use(Lazyload)
 export default {
@@ -53,21 +59,62 @@ export default {
   data () {
     return {
       page: 1,
+      userPKey: 1587806628000,
+      userPMain: 66,
+      userPBase: 188687656,
+      userUser: 'potnrey88sauB86',
       loading: false,
       finished: false,
       eikonLeft: [],
       eikonRight: []
     }
   },
-  props: {
-    type: {
-      type: Number,
-      default: 1
+  computed: {
+    ...mapState('moduelA', ['type'])
+  },
+  watch: {
+    type (newVal, oldVal) {
+      if (newVal === oldVal) return
+      if (newVal === 1) {
+        this.page = 1
+        this.userPKey = 1587806628000
+        this.userPMain = 66
+        this.userPBase = 188687656
+        this.userUser = 'potnrey88sauB86'
+        this.eikonLeft = []
+        this.eikonRight = []
+      }
+      if (newVal === 2) {
+        this.page = 1
+        this.userPKey = 1587861686000
+        this.userPMain = 40
+        this.userPBase = 311345428
+        this.userUser = 'potnrey86sauB14'
+        this.eikonLeft = []
+        this.eikonRight = []
+      }
+      if (newVal === 3) {
+        this.page = 1
+        this.userPKey = 1587862438000
+        this.userPMain = 75
+        this.userPBase = 166050973
+        this.userUser = 'potnrey88sauB69'
+        this.eikonLeft = []
+        this.eikonRight = []
+      }
+      this.getEikon({
+        type: newVal,
+        page: this.page,
+        userPKey: this.userPKey,
+        userPMain: this.userPMain,
+        userPBase: this.userPBase,
+        userUser: this.userUser
+      })
     }
   },
   methods: {
-    getEikon (type, page) {
-      getEikon(type, page).then(res => {
+    getEikon (option) {
+      getEikon(option).then(res => {
         const data = res.data
         data.forEach((item, index) => {
           if (this.page % 2 !== 0) {
