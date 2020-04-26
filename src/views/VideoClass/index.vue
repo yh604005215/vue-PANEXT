@@ -1,10 +1,16 @@
 <template>
-  <h1>动漫分类页</h1>
+  <div class="panext-video-class">
+    <HeaderMenu>{{ '动漫分类' }}</HeaderMenu>
+  </div>
 </template>
 
 <script>
+import HeaderMenu from '@/components/HeaderMenu'
 export default {
-  name: 'VideoClass'
+  name: 'VideoClass',
+  components: {
+    HeaderMenu
+  }
 }
 </script>
 
