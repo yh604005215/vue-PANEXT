@@ -60,6 +60,7 @@ export default {
     flex: 1;
     display: flex;
     flex-flow: column;
+    overflow: hidden;
     .taobao-text {
       padding: 0px 4px;
       font-size: 16px;

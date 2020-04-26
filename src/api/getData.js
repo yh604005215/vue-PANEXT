@@ -62,3 +62,11 @@ export const getTaobao = (page, content) => {
     }
   })
 }
+
+// 插图分类列表数据
+export const getPictureClass = () => {
+  return request({
+    url: '/hqcc/apiH5.php?r=group/grouplist&token=&userPKey=1587905511000&userPMain=18&userPBase=691897826&userUser=tuK850P1re9',
+    method: 'GET'
+  })
+}
