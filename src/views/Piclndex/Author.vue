@@ -16,8 +16,8 @@
         <img :src="item.avatar" alt="" class="author-avatar">
         <span class="author-text">{{ item.nick }}</span>
       </van-col>
-      <van-col span="4" class="author">
-        <router-link to="/picture-class">
+      <van-col span="4">
+        <router-link to="/picture-class" class="author">
           <img src="@/assets/icon/classify.jpg" class="classify-avatar">
           <span class="classify-text">{{ '分类' }}</span>
         </router-link>

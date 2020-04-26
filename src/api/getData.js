@@ -31,7 +31,7 @@ export const getPiclndex = () => {
 // 获取插图
 export const getEikon = (option) => {
   return request({
-    url: '/hqcc/apiH5.php?',
+    url: '/hqcc/apiH5.php',
     method: 'GET',
     params: {
       r: 'index/indexatlaslist',
@@ -42,6 +42,23 @@ export const getEikon = (option) => {
       userPMain: option.userPMain,
       userPBase: option.userPBase,
       userUser: option.userUser
+    }
+  })
+}
+
+// 获取P淘商城数据
+export const getTaobao = (page, content) => {
+  return request({
+    url: '/hqcc/apiH5.php',
+    method: 'GET',
+    params: {
+      r: 'tao/taolist',
+      page,
+      q: content,
+      userPKey: 1587900024000,
+      userPMain: 87,
+      userPBase: 143150779,
+      userUser: 'pqP500rnes19'
     }
   })
 }

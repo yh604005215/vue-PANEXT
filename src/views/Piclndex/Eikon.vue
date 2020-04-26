@@ -13,7 +13,7 @@
       userPBase,
       userUser
     })">
-      <div v-for="item in eikonLeft" :key="item.id" class="item">
+      <div v-for="item in eikonLeft" :key="item.pid" class="item">
         <div class="img-box">
           <img v-lazy="item.coverUrl"
           :style="{'width': '100%',
@@ -31,7 +31,7 @@
     class="list"
     v-model="loading"
     :finished="finished">
-      <div v-for="item in eikonRight" :key="item.id" class="item">
+      <div v-for="item in eikonRight" :key="item.pid" class="item">
           <div class="img-box">
             <img v-lazy="item.coverUrl" :style="{'width': '100%','min-height': '100px' }">
             <div class="img-text" v-if="item.allNum > 1">{{ item.allNum }}图</div>
@@ -83,6 +83,7 @@ export default {
         this.userUser = 'potnrey88sauB86'
         this.eikonLeft = []
         this.eikonRight = []
+        this.finished = false
       }
       if (newVal === 2) {
         this.page = 1
@@ -92,6 +93,7 @@ export default {
         this.userUser = 'potnrey86sauB14'
         this.eikonLeft = []
         this.eikonRight = []
+        this.finished = false
       }
       if (newVal === 3) {
         this.page = 1
@@ -101,6 +103,7 @@ export default {
         this.userUser = 'potnrey88sauB69'
         this.eikonLeft = []
         this.eikonRight = []
+        this.finished = false
       }
       this.getEikon({
         type: newVal,
@@ -133,7 +136,7 @@ export default {
         })
         this.page++
         this.loading = false
-        if (this.page >= 9) {
+        if (this.page >= 10) {
           this.finished = true
         }
       })
@@ -181,6 +184,9 @@ export default {
     line-height: 16px;
     height: 16px;
     padding-left: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .avater {
     height: 24px;

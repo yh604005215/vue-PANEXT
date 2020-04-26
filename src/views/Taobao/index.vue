@@ -19,6 +19,7 @@
           </template>
         </van-search>
       </div>
+      <Goods :content="value" />
     </div>
   </div>
 </template>
@@ -27,12 +28,14 @@
 import HeaderMenu from '@/components/HeaderMenu'
 import Vue from 'vue'
 import { Search } from 'vant'
-
+import Goods from './Goods'
+import { mapMutations } from 'vuex'
 Vue.use(Search)
 export default {
   name: 'Taobao',
   components: {
-    HeaderMenu
+    HeaderMenu,
+    Goods
   },
   data () {
     return {
@@ -40,8 +43,10 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('moduelA', ['SET_CONTENT']),
     onSearch () {
       console.log(this.value)
+      this.SET_CONTENT(this.value)
     }
   }
 }
@@ -53,6 +58,8 @@ export default {
   flex-flow: column;
   .main {
     flex: 1;
+    display: flex;
+    flex-flow: column;
     .taobao-text {
       padding: 0px 4px;
       font-size: 16px;
