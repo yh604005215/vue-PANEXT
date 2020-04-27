@@ -21,7 +21,7 @@ import HeaderMenu from '@/components/HeaderMenu'
 import { getHomeData } from '@/api/getData'
 import YhBanner from './Banner'
 import NewCartoon from './NewCartoon'
-import AnimeList from './AnimeList'
+import AnimeList from '@/components/AnimeList'
 export default {
   name: 'Home',
   data () {

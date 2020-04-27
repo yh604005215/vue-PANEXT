@@ -70,3 +70,34 @@ export const getPictureClass = () => {
     method: 'GET'
   })
 }
+
+// 动漫分类数据
+export const getThemeClass = () => {
+  return request({
+    url: '/hqcc/apiH5.php',
+    method: 'GET',
+    params: {
+      r: 'class/videoclassconfig',
+      userPKey: 1587974396000,
+      userPMain: 33,
+      userPBase: 377415186,
+      userUser: 'uK830P3re1'
+    }
+  })
+}
+
+export const getVideoList = () => {
+  return request({
+    url: '/hqcc/apiH5.php',
+    method: 'GET',
+    params: {
+      r: 'class/classlist',
+      classId: 0,
+      year: 0,
+      userPKey: 1587978961000,
+      userPMain: 4,
+      userPBase: 3113684237,
+      userUser: 'cIaey91sasa12'
+    }
+  })
+}

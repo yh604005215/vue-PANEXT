@@ -1,11 +1,12 @@
 <template>
   <div class="anime-list">
-    <h2 class="sub-title"><strong class="title-content"><slot /></strong></h2>
+    <h2 class="sub-title" v-if="isTitle"><strong class="title-content"><slot /></strong></h2>
     <van-row type="flex" justify="space-between">
       <van-col span="8" v-for="item in anime"  :key="item.id" @click="onVideo(item.id)">
           <div class="video">
             <div class="video_newIcon" v-if="item.isNew">new</div>
             <img  v-lazy="item.pic" />
+            <div class="video_tag " v-if="item.isNew">{{ item.newTag }}</div>
           </div>
           <div class="van-multi-ellipsis--l2">
                 {{ item.name }}
@@ -30,6 +31,10 @@ export default {
       default () {
         return []
       }
+    },
+    isTitle: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
@@ -82,6 +87,20 @@ export default {
       width: 100%;
       vertical-align: middle;
       border-radius: 5px;
+    }
+    .video_tag {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      font-size: 10px;
+      color: #673ab7;
+      font-weight: 500;
+      border: 1px solid #d1c4e9;
+      background: rgba(209,196,233,.7);
+      border-radius: 4px;
+      margin-bottom: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
     }
     .video {
       height: 168.033px;
