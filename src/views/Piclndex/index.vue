@@ -8,7 +8,7 @@
         </router-link>
       </div>
       <Author :author="author" v-if="author"></Author>
-      <div class="ivu-divider ivu-divider-horizontal ivu-divider-dashed"></div>
+      <div class="dashed"></div>
       <Eikon />
     </div>
   </div>
@@ -68,6 +68,11 @@ export default {
     .van-col {
       font-size: 14px;
       color: #757575;
+    }
+    .dashed {
+      height: 0;
+      border-top: 0.02667rem dashed #e8eaec;
+      margin: 5px 0;
     }
   }
 }

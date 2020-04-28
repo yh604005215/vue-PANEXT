@@ -1,17 +1,5 @@
 <template>
-  <van-list
-  class="eikon"
-  v-model="loading"
-    :finished="finished"
-    finished-text="豪哥牛逼"
-    @load="getEikon({
-      type,
-      page,
-      userPKey,
-      userPMain,
-      userPBase,
-      userUser
-    })">
+  <section class="eikon">
     <section class="list">
       <div v-for="item in eikonLeft" :key="item.pid" class="item">
         <div class="img-box">
@@ -40,105 +28,26 @@
           </div>
         </div>
     </section>
-
-  </van-list>
+  </section>
 </template>
 
 <script>
 import Vue from 'vue'
-import { Lazyload, List } from 'vant'
-import { getEikon } from '@/api/getData'
-import { mapState } from 'vuex'
-Vue.use(List)
+import { Lazyload } from 'vant'
+
 Vue.use(Lazyload)
 export default {
-  name: 'Eikon',
-  data () {
-    return {
-      page: 1,
-      userPKey: 1587806628000,
-      userPMain: 66,
-      userPBase: 188687656,
-      userUser: 'potnrey88sauB86',
-      loading: false,
-      finished: false,
-      eikonLeft: [],
-      eikonRight: [],
-      lHeight: 0,
-      rHeight: 0
-    }
-  },
-  computed: {
-    ...mapState('moduelA', ['type'])
-  },
-  watch: {
-    type (newVal, oldVal) {
-      if (newVal === 1) {
-        this.rHeight = 0
-        this.lHeight = 0
-        this.page = 1
-        this.userPKey = 1587806628000
-        this.userPMain = 66
-        this.userPBase = 188687656
-        this.userUser = 'potnrey88sauB86'
-        this.eikonLeft = []
-        this.eikonRight = []
-        this.finished = false
-      }
-      if (newVal === 2) {
-        this.rHeight = 0
-        this.lHeight = 0
-        this.page = 1
-        this.userPKey = 1587861686000
-        this.userPMain = 40
-        this.userPBase = 311345428
-        this.userUser = 'potnrey86sauB14'
-        this.eikonLeft = []
-        this.eikonRight = []
-        this.finished = false
-      }
-      if (newVal === 3) {
-        this.rHeight = 0
-        this.lHeight = 0
-        this.page = 1
-        this.userPKey = 1587862438000
-        this.userPMain = 75
-        this.userPBase = 166050973
-        this.userUser = 'potnrey88sauB69'
-        this.eikonLeft = []
-        this.eikonRight = []
-        this.finished = false
-      }
-      this.getEikon({
-        type: newVal,
-        page: this.page,
-        userPKey: this.userPKey,
-        userPMain: this.userPMain,
-        userPBase: this.userPBase,
-        userUser: this.userUser
-      })
+  name: 'PiclndexList',
+  props: {
+    eikonLeft: {
+      type: Array
+    },
+    eikonRight: {
+      type: Array
     }
   },
   methods: {
-    getEikon (option) {
-      getEikon(option).then(res => {
-        const data = res.data
-        data.forEach(item => {
-          if (this.lHeight <= this.rHeight) {
-            this.lHeight += ~~item.coverHeight
-            this.eikonLeft.push(item)
-          } else {
-            this.rHeight += ~~item.coverHeight
-            this.eikonRight.push(item)
-          }
-        })
-        this.page++
-        this.loading = false
-        if (this.page >= 10) {
-          this.finished = true
-        }
-      })
-    }
+
   }
 }
 </script>

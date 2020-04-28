@@ -22,6 +22,7 @@
         color="#2d8cf0"
         title-active-color="#2d8cf0">
           <van-tab title="插图与画师">
+            <PiclndexList :eikonLeft="eikonLeft" :eikonRight="eikonRight" />
           </van-tab>
           <van-tab title="动漫"><AnimeList :anime="videoList" /></van-tab>
         </van-tabs>
@@ -33,6 +34,7 @@
 <script>
 import HeaderMenu from '@/components/HeaderMenu'
 import AnimeList from '@/components/AnimeList'
+import PiclndexList from './PiclndexList'
 import Vue from 'vue'
 import { Tab, Tabs, Search } from 'vant'
 import { getSearchVideo, getSearchPiclndex } from '@/api/getData'
@@ -46,12 +48,16 @@ export default {
       active: 1,
       value: '',
       videoList: [],
-      Piclndex: []
+      eikonLeft: [],
+      eikonRight: [],
+      lHeight: 0,
+      rHeight: 0
     }
   },
   components: {
     HeaderMenu,
-    AnimeList
+    AnimeList,
+    PiclndexList
   },
   methods: {
     onSearch () {
@@ -66,7 +72,24 @@ export default {
     },
     getSearchPiclndex (val) {
       getSearchPiclndex(val).then(res => {
+        this.eikonLeft = []
+        this.eikonRight = []
+        this.lHeight = 0
+        this.rHeight = 0
+        const data = res.data.list
         console.log(res)
+        if (data.length > 0) {
+          data.forEach(item => {
+            if (this.lHeight <= this.rHeight) {
+              this.lHeight += ~~item.coverHeight
+              this.eikonLeft.push(item)
+              console.log(this.eikonRight)
+            } else {
+              this.rHeight += ~~item.coverHeight
+              this.eikonRight.push(item)
+            }
+          })
+        }
       })
     }
   }
