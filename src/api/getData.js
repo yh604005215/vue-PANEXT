@@ -117,3 +117,19 @@ export const getSearchPiclndex = (val) => {
     method: 'GET'
   })
 }
+
+// 往期番剧页数据
+export const getCollection = (id) => {
+  return request({
+    url: '/hqcc/apiH5.php',
+    method: 'GET',
+    params: {
+      r: 'video/videocollection',
+      collectId: id,
+      userPKey: 1588082608000,
+      userPMain: 99,
+      userPBase: 125813635,
+      userUser: 'ccuK860P9re1'
+    }
+  })
+}

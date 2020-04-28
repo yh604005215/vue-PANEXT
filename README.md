@@ -49,6 +49,9 @@ path: pictureClass
 name: Detail
 path: atlas/detail
 
+## 画师个人页
+未定 接口可以用
+
 ## P淘商城页
 name: Taobao
 path: taobao
@@ -68,5 +71,9 @@ path: forget
 name: User
 path: user
 # 二、需要公用组件
-## 头部导航
+## 头部导航组件
 name：HeaderMenu
+## 分页按钮组件
+name: Paging
+## 动漫列表组件
+name: AnimeList
