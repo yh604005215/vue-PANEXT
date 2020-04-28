@@ -85,7 +85,7 @@ export const getThemeClass = () => {
     }
   })
 }
-
+// 视频列表数据
 export const getVideoList = (option) => {
   return request({
     url: '/hqcc/apiH5.php',
@@ -100,5 +100,20 @@ export const getVideoList = (option) => {
       userPBase: option.userPBase,
       userUser: option.userUser
     }
+  })
+}
+
+// 搜索页动漫数据
+export const getSearchVideo = (val) => {
+  return request({
+    url: `/hqcc/apiH5.php?r=video/videosearch&searchText=${val}&userPKey=1588041561000&userPMain=89&userPBase=139946381&userUser=shuK850P8re4`,
+    method: 'GET'
+  })
+}
+
+export const getSearchPiclndex = (val) => {
+  return request({
+    url: `/hqcc/apiH5.php?r=search/searchajax&type=3&searchText=${val}&userId=&page=1&userPKey=1588042193000&userPMain=61&userPBase=204184145&userUser=tshud1P520rnes15`,
+    method: 'GET'
   })
 }

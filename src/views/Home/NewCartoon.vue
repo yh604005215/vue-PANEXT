@@ -1,7 +1,9 @@
 <template>
   <div class="new-cartoon">
     <h2 class="sub-title"><strong class="title-content"><slot /></strong></h2>
-    <van-tabs v-model="active" color="#2c3e50"  :animated="true" swipe-threshold="7">
+    <van-tabs v-model="active" color="#2c3e50"
+      :animated="true" swipe-threshold="7"
+      :swipeable="true">
       <van-tab
       :title="item.weekName"
        v-for="item in anime"
