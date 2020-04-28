@@ -3,7 +3,8 @@
     <HeaderMenu>{{ '动漫分类' }}</HeaderMenu>
     <div class="main">
       <section class="class-list">
-        <section class="all" @click="onClass(0)">
+        <section class="all" @click="onClass(0)"
+        :class="{active: classId === 0}">
           <span>全部</span>
         </section>
           <van-row class="theme-list">
@@ -11,6 +12,7 @@
             class="title van-ellipsis"
             v-for="item in classList"
             :key="item.id"
+            :class="{active: classId === item.id}"
             @click="onClass(item.id)">
               {{ item.className }}
             </van-col>
@@ -18,13 +20,15 @@
       </section>
       <section class="year">
         <section class="year-box">
-          <section class="all" @click="onYear(0)"><span>全部</span></section>
+          <section class="all" @click="onYear(0)"
+          :class="{active: year === 0}"><span>全部</span></section>
             <van-row class="year-list">
                 <van-col span="4"
                 class="title van-ellipsis"
                 v-for="item in yearList"
                 :key="item.year"
-                @click="onYear(item.year)">
+                @click="onYear(item.year)"
+                :class="{active: year === item.year}">
                   {{ item.name }}
                 </van-col>
             </van-row>
@@ -62,7 +66,11 @@ export default {
       pages: 0,
       currentPage: 1,
       classId: 0,
-      year: 0
+      year: 0,
+      userPKey: 1588004001000,
+      userPMain: 60,
+      userPBase: 207582222,
+      userUser: 'cIagey01sauB02'
     }
   },
   methods: {
@@ -82,18 +90,76 @@ export default {
     },
     onClass (id) {
       this.classId = id
+      this.currentPage = 1
+      if (this.classId === 0 && this.year === 0) {
+        this.userPKey = 1588004001000
+        this.userPMain = 60
+        this.userPBase = 207582222
+        this.userUser = 'cIagey01sauB02'
+      }
+      if (this.classId === 0 && this.year !== 0) {
+        this.userPKey = 1588037967000
+        this.userPMain = 58
+        this.userPBase = 214744823
+        this.userUser = 'cIa91P570rnes73'
+      }
+      if (this.classId !== 0 && this.year === 0) {
+        this.userPKey = 1588037223000
+        this.userPMain = 95
+        this.userPBase = 131107304
+        this.userUser = 'cIease82uM5P17'
+      }
+      if (this.classId !== 0 && this.year !== 0) {
+        this.userPKey = 1588037503000
+        this.userPMain = 63
+        this.userPBase = 197701525
+        this.userUser = 'cIa91P570rnes75'
+      }
       this.getVideoList({
         page: this.currentPage,
         year: this.year,
-        classId: this.classId
+        classId: this.classId,
+        userPKey: this.userPKey,
+        userPMain: this.userPMain,
+        userPBase: this.userPBase,
+        userUser: this.userUser
       })
     },
     onYear (year) {
       this.year = year
+      this.currentPage = 1
+      if (this.classId === 0 && this.year === 0) {
+        this.userPKey = 1588004001000
+        this.userPMain = 60
+        this.userPBase = 207582222
+        this.userUser = 'cIagey01sauB02'
+      }
+      if (this.classId === 0 && this.year !== 0) {
+        this.userPKey = 1588037967000
+        this.userPMain = 58
+        this.userPBase = 214744823
+        this.userUser = 'cIa91P570rnes73'
+      }
+      if (this.classId !== 0 && this.year === 0) {
+        this.userPKey = 1588037223000
+        this.userPMain = 95
+        this.userPBase = 131107304
+        this.userUser = 'cIease82uM5P17'
+      }
+      if (this.classId !== 0 && this.year !== 0) {
+        this.userPKey = 1588037503000
+        this.userPMain = 63
+        this.userPBase = 197701525
+        this.userUser = 'cIa91P570rnes75'
+      }
       this.getVideoList({
         page: this.currentPage,
         year: this.year,
-        classId: this.classId
+        classId: this.classId,
+        userPKey: this.userPKey,
+        userPMain: this.userPMain,
+        userPBase: this.userPBase,
+        userUser: this.userUser
       })
     },
     onCurrentPage (val) {
@@ -101,7 +167,11 @@ export default {
       this.getVideoList({
         page: this.currentPage,
         year: this.year,
-        classId: this.classId
+        classId: this.classId,
+        userPKey: this.userPKey,
+        userPMain: this.userPMain,
+        userPBase: this.userPBase,
+        userUser: this.userUser
       })
     }
   },
@@ -110,7 +180,11 @@ export default {
     this.getVideoList({
       page: this.currentPage,
       year: this.year,
-      classId: this.classId
+      classId: this.classId,
+      userPKey: this.userPKey,
+      userPMain: this.userPMain,
+      userPBase: this.userPBase,
+      userUser: this.userUser
     })
   }
 }
@@ -165,6 +239,9 @@ export default {
           }
         }
       }
+    }
+    .active {
+      color: #2d8cf0;
     }
   }
 }

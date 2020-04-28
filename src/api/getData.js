@@ -95,10 +95,10 @@ export const getVideoList = (option) => {
       classId: option.classId,
       year: option.year,
       page: option.page,
-      userPKey: 1588004001000,
-      userPMain: 60,
-      userPBase: 207582222,
-      userUser: 'cIagey01sauB02'
+      userPKey: option.userPKey,
+      userPMain: option.userPMain,
+      userPBase: option.userPBase,
+      userUser: option.userUser
     }
   })
 }

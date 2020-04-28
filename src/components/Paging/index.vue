@@ -53,7 +53,7 @@ export default {
   computed: {
     pages () {
       const pages = []
-      if (this.totalPages > this.pageSize) {
+      if (this.totalPages >= this.pageSize) {
         for (let i = 1; i < this.totalPages; i++) {
           if (this.currentPage >= i && i + 2 >= this.currentPage) {
             pages.push(i)
@@ -65,6 +65,8 @@ export default {
         if (this.currentPage >= this.totalPages - 2) {
           pages.push(this.totalPages)
         }
+      } else {
+        pages.push(1)
       }
 
       return pages
