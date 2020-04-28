@@ -3,7 +3,7 @@
     <HeaderMenu>{{ '动漫分类' }}</HeaderMenu>
     <div class="main">
       <section class="class-list">
-        <section class="all">
+        <section class="all" @click="onClass(0)">
           <span>全部</span>
         </section>
           <van-row class="theme-list">
@@ -18,19 +18,21 @@
       </section>
       <section class="year">
         <section class="year-box">
-          <section class="all"><span>全部</span></section>
+          <section class="all" @click="onYear(0)"><span>全部</span></section>
             <van-row class="year-list">
                 <van-col span="4"
                 class="title van-ellipsis"
-                v-for="item in year"
+                v-for="item in yearList"
                 :key="item.year"
-                @click="onClass(item.id)">
+                @click="onYear(item.year)">
                   {{ item.name }}
                 </van-col>
             </van-row>
           </section>
       </section>
       <AnimeList :anime="videoList" :isTitle="false" />
+      <Paging :totalPages="pages"
+      @hello="onCurrentPage" />
     </div>
   </div>
 </template>
@@ -38,6 +40,7 @@
 <script>
 import HeaderMenu from '@/components/HeaderMenu'
 import AnimeList from '@/components/AnimeList'
+import Paging from '@/components/Paging'
 import Vue from 'vue'
 import { Col, Row } from 'vant'
 import { getThemeClass, getVideoList } from '@/api/getData'
@@ -48,14 +51,18 @@ export default {
   name: 'VideoClass',
   components: {
     HeaderMenu,
-    AnimeList
+    AnimeList,
+    Paging
   },
   data () {
     return {
       classList: [],
-      year: [],
+      yearList: [],
       videoList: [],
-      pages: 0
+      pages: 0,
+      currentPage: 1,
+      classId: 0,
+      year: 0
     }
   },
   methods: {
@@ -63,23 +70,48 @@ export default {
       getThemeClass().then(res => {
         console.log(res)
         this.classList = res.class
-        this.year = res.year
+        this.yearList = res.year
       })
     },
-    getVideoList () {
-      getVideoList().then(res => {
+    getVideoList (option) {
+      getVideoList(option).then(res => {
         this.videoList = res.videoList.list
-        this.pages = res.videoList.num / res.params.size
+        this.pages = Math.ceil(res.videoList.num / res.params.size)
         this.currentPage = res.params.page
       })
     },
     onClass (id) {
-      console.log(id)
+      this.classId = id
+      this.getVideoList({
+        page: this.currentPage,
+        year: this.year,
+        classId: this.classId
+      })
+    },
+    onYear (year) {
+      this.year = year
+      this.getVideoList({
+        page: this.currentPage,
+        year: this.year,
+        classId: this.classId
+      })
+    },
+    onCurrentPage (val) {
+      this.currentPage = val
+      this.getVideoList({
+        page: this.currentPage,
+        year: this.year,
+        classId: this.classId
+      })
     }
   },
   created () {
     this.getThemeClass()
-    this.getVideoList()
+    this.getVideoList({
+      page: this.currentPage,
+      year: this.year,
+      classId: this.classId
+    })
   }
 }
 </script>

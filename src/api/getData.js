@@ -86,18 +86,19 @@ export const getThemeClass = () => {
   })
 }
 
-export const getVideoList = () => {
+export const getVideoList = (option) => {
   return request({
     url: '/hqcc/apiH5.php',
     method: 'GET',
     params: {
       r: 'class/classlist',
-      classId: 0,
-      year: 0,
-      userPKey: 1587978961000,
-      userPMain: 4,
-      userPBase: 3113684237,
-      userUser: 'cIaey91sasa12'
+      classId: option.classId,
+      year: option.year,
+      page: option.page,
+      userPKey: 1588004001000,
+      userPMain: 60,
+      userPBase: 207582222,
+      userUser: 'cIagey01sauB02'
     }
   })
 }

@@ -6,7 +6,7 @@
           <div class="video">
             <div class="video_newIcon" v-if="item.isNew">new</div>
             <img  v-lazy="item.pic" />
-            <div class="video_tag " v-if="item.isNew">{{ item.newTag }}</div>
+            <div class="video_tag " v-if="item.newTag">{{ item.newTag }}</div>
           </div>
           <div class="van-multi-ellipsis--l2">
                 {{ item.name }}
