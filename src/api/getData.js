@@ -71,6 +71,14 @@ export const getPictureClass = () => {
   })
 }
 
+// 画师排行榜数据
+export const getPainterRank = (page) => {
+  return request({
+    url: `/hqcc/apiH5.php?r=painter/painterfocusrank&token=&userId=&page=${page}&userPKey=1588125474000&userPMain=35&userPBase=355882459&userUser=tud1P550rnes89`,
+    method: 'GET'
+  })
+}
+
 // 动漫分类数据
 export const getThemeClass = () => {
   return request({
@@ -85,6 +93,7 @@ export const getThemeClass = () => {
     }
   })
 }
+
 // 视频列表数据
 export const getVideoList = (option) => {
   return request({
@@ -100,6 +109,21 @@ export const getVideoList = (option) => {
       userPBase: option.userPBase,
       userUser: option.userUser
     }
+  })
+}
+
+// 视频数据
+export const getVideoInfo = () => {
+  return request({
+    url: '/hqcc/apiH5.php?r=video/videoinfo&videoId=6931&sourceId=59813&userId=&userPKey=1588128689000&userPMain=26&userPBase=479073511&userUser=vI1c9suK860P2re7',
+    method: 'GET'
+  })
+}
+
+export const getVideo = () => {
+  return request({
+    url: '/hqcc/apiH5.php?r=video/videosource&sourceId=59813&userPKey=1588129342000&userPMain=37&userPBase=336646389&userUser=se8ey12sauB33',
+    method: 'GET'
   })
 }
 

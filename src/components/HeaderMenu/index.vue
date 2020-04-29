@@ -63,6 +63,7 @@ export default {
   .header-left{
     display: flex;
     flex: 1;
+    overflow: hidden;
     .logo {
       width: 89px;
       height: 20px;
@@ -77,6 +78,7 @@ export default {
     .title {
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
       position: relative;
       top: 3px
     }
