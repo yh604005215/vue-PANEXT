@@ -157,3 +157,11 @@ export const getCollection = (id) => {
     }
   })
 }
+
+//  画师数据
+export const getPainter = (id, page) => {
+  return request({
+    url: `/hqcc/apiH5.php?r=painter/painterindex&id=${id}&token=&page=${page}&userPKey=1588168449000&userPMain=41&userPBase=303810320&userUser=itpuK840P4re1`,
+    method: 'GET'
+  })
+}

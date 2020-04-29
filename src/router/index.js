@@ -15,6 +15,7 @@ const User = () => import('../views/User')
 const Taobao = () => import('../views/Taobao')
 const Collection = () => import('../views/Video/Collection')
 const Rank = () => import('../views/Rank')
+const Painter = () => import('../views/Painter')
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,7 @@ const router = new VueRouter({
     { path: '/user', component: User },
     { path: '/video/collection', component: Collection },
     { path: '/rank', component: Rank },
+    { path: '/painter', component: Painter },
     { path: '/', redirect: '/home' }
   ]
 })

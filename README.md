@@ -60,6 +60,10 @@ path: taobao
 name: Login
 path: login
 
+## 画师个人页
+name: Painter
+path: painter
+
 ## 注册页
 name: Register
 path: register

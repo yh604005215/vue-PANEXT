@@ -12,7 +12,9 @@
       </van-col>
     </van-row>
     <van-row>
-      <van-col span="5" v-for="item in author" :key="item.id" class="author">
+      <van-col span="5" v-for="item in author" :key="item.id"
+      class="author"
+      @click="onHeadPainter(item.id)">
         <img :src="item.avatar" alt="" class="author-avatar">
         <span class="author-text">{{ item.nick }}</span>
       </van-col>
@@ -49,6 +51,9 @@ export default {
     ...mapMutations('moduelA', ['SET_TYPE']),
     onType (val) {
       this.SET_TYPE(val)
+    },
+    onHeadPainter (id) {
+      this.$router.push({ path: '/painter', query: { painterId: id } })
     }
   }
 }
