@@ -2,7 +2,8 @@
   <div class="panext-rank">
     <HeaderMenu>画师top榜</HeaderMenu>
     <div class="main">
-      <dl v-for="item in list" :key="item.id" class="painter_item">
+      <dl v-for="item in list" :key="item.id" class="painter_item"
+      @click="onHeadPainter(item.id)">
         <dt class="painter_avatar">
           <img v-lazy="item.avatar" />
         </dt>
@@ -41,6 +42,9 @@ export default {
       getPainterRank(page).then(res => {
         this.list = res
       })
+    },
+    onHeadPainter (id) {
+      this.$router.push({ path: '/painter', query: { painterId: id } })
     }
   },
   created () {

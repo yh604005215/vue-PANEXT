@@ -165,3 +165,18 @@ export const getPainter = (id, page) => {
     method: 'GET'
   })
 }
+
+// 社区插图数据
+export const getGroup = () => {
+  return request({
+    url: '/hqcc/apiH5.php?r=group/groupindex&index=6&userPKey=1588212127000&userPMain=40&userPBase=311414142&userUser=i6P520rnes42',
+    method: 'GET'
+  })
+}
+
+export const getGroupEikon = (page) => {
+  return request({
+    url: `/hqcc/apiH5.php?r=group/groupnewatlas&index=6&page=${page}&userToken=&userPKey=1588214900000&userPMain=64&userPBase=194634178&userUser=i61TuK890P6re3`,
+    method: 'GET'
+  })
+}

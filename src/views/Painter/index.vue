@@ -1,9 +1,17 @@
 <template>
   <div class="panext-painter">
-    <HeaderMenu>{{ painterInfo.nick }}</HeaderMenu>
+    <HeaderMenu v-if="painterInfo">{{ painterInfo.nick }}</HeaderMenu>
     <div class="main">
-      <PainterInfo :painterInfo="painterInfo" />
+      <PainterInfo :painterInfo="painterInfo" v-if="painterInfo" />
       <div class="dashed"></div>
+      <van-list
+        v-model="loading"
+        :finished="finished"
+        finished-text="没有更多了"
+        @load="getPainter(page)"
+      >
+      <PainterEikon :list="list" v-if="list"/>
+      </van-list>
     </div>
   </div>
 </template>
@@ -12,33 +20,40 @@
 import HeaderMenu from '@/components/HeaderMenu'
 import { getPainter } from '@/api/getData'
 import PainterInfo from './PainterInfo'
+import PainterEikon from '@/components/PainterEikon'
 import Vue from 'vue'
-import { Button } from 'vant'
+import { Button, List } from 'vant'
 Vue.use(Button)
+Vue.use(List)
 export default {
   name: 'Painter',
   data () {
     return {
       page: 1,
-      painterInfo: {},
-      eikonLeft: [],
-      eikonRight: []
+      painterInfo: null,
+      loading: false,
+      finished: false,
+      list: []
     }
   },
   components: {
     HeaderMenu,
-    PainterInfo
+    PainterInfo,
+    PainterEikon
   },
   methods: {
-    getPainter (id, page) {
+    getPainter (page) {
+      const id = this.$route.query.painterId
       getPainter(id, page).then(res => {
-        this.painterInfo = res.data.painterInfo
+        if (!this.painterInfo) {
+          this.painterInfo = res.data.painterInfo
+        }
+        res.data.atlasList.forEach(item => this.list.push(item))
+        this.page++
+        this.loading = false
+        if (this.page > 9) this.finished = true
       })
     }
-  },
-  created () {
-    const id = this.$route.query.painterId
-    this.getPainter(id, this.page)
   }
 }
 </script>
@@ -96,12 +111,6 @@ export default {
     .p_intro {
       font-size: 12px;
     }
-  }
-  .dashed {
-    background: 0 0;
-    border-top: 1px dashed #e8eaec;
-    width: 100%;
-    margin: 4px 0;
   }
 }
 </style>

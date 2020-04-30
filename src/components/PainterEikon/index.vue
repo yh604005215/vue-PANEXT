@@ -9,10 +9,6 @@
           <div class="img-text" v-if="item.allNum > 1">{{ item.allNum }}图</div>
         </div>
         <p class="img-title">{{ item.title }}</p>
-        <div class="info">
-          <b><img v-lazy="item.painterAvatar" alt="" class="avater"></b>
-          <span class="nick">{{ item.nick }}</span>
-        </div>
       </div>
     </section>
     <section class="list">
@@ -22,10 +18,6 @@
             <div class="img-text" v-if="item.allNum > 1">{{ item.allNum }}图</div>
           </div>
           <p class="img-title">{{ item.title }}</p>
-          <div class="info">
-            <b><img v-lazy="item.painterAvatar" alt="" class="avater"></b>
-            <span  class="nick">{{ item.nick }}</span>
-          </div>
         </div>
     </section>
   </section>
@@ -39,15 +31,38 @@ Vue.use(Lazyload)
 export default {
   name: 'PiclndexList',
   props: {
-    eikonLeft: {
-      type: Array
-    },
-    eikonRight: {
+    list: {
       type: Array
     }
   },
-  methods: {
-
+  data () {
+    return {
+      eikonLeft: [],
+      eikonRight: [],
+      lHeight: 0,
+      rHeight: 0
+    }
+  },
+  watch: {
+    list () {
+      this.eikonLeft = []
+      this.eikonRight = []
+      this.lHeight = 0
+      this.rHeight = 0
+      const data = this.list
+      if (data.length > 0) {
+        data.forEach(item => {
+          if (this.lHeight <= this.rHeight) {
+            this.lHeight += ~~item.coverHeight
+            this.eikonLeft.push(item)
+            console.log(this.eikonRight)
+          } else {
+            this.rHeight += ~~item.coverHeight
+            this.eikonRight.push(item)
+          }
+        })
+      }
+    }
   }
 }
 </script>
