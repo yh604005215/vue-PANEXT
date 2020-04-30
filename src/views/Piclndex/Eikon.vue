@@ -13,7 +13,8 @@
       userUser
     })">
     <section class="list">
-      <div v-for="item in eikonLeft" :key="item.pid" class="item">
+      <div v-for="item in eikonLeft" :key="item.pid" class="item"
+      @click="onHeadDetail(item.id, item.title)">
         <div class="img-box">
           <img v-lazy="item.coverUrl"
           :style="{'width': '100%',
@@ -28,7 +29,8 @@
       </div>
     </section>
     <section class="list">
-      <div v-for="item in eikonRight" :key="item.pid" class="item">
+      <div v-for="item in eikonRight" :key="item.pid" class="item"
+      @click="onHeadDetail(item.id, item.title)">
           <div class="img-box">
             <img v-lazy="item.coverUrl" :style="{'width': '100%','min-height': '100px' }">
             <div class="img-text" v-if="item.allNum > 1">{{ item.allNum }}图</div>
@@ -137,6 +139,12 @@ export default {
         if (this.page >= 10) {
           this.finished = true
         }
+      })
+    },
+    onHeadDetail (id, title) {
+      this.$router.push({
+        path: 'detail',
+        query: { atlasId: id, title }
       })
     }
   }

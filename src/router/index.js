@@ -28,7 +28,7 @@ const router = new VueRouter({
     { path: '/piclndex', component: Piclndex },
     { path: '/video-class', component: VideoClass },
     { path: '/picture-class', component: PictureClass },
-    { path: '/atlas/detail', component: Detail },
+    { path: '/detail', component: Detail },
     { path: '/taobao', component: Taobao },
     { path: '/login', component: Login },
     { path: '/register', component: Register },

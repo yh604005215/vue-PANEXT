@@ -180,3 +180,32 @@ export const getGroupEikon = (page) => {
     method: 'GET'
   })
 }
+
+// 插图详情数据
+export const getDetail = () => {
+  return request({
+    url: '/hqcc/apiH5.php?r=detail/getatlasbase&id=98896&token=&userPKey=1588230930000&userPMain=1&userPBase=12456713176&userUser=i9er130eies51',
+    method: 'GET'
+  })
+}
+
+export const getPicture = () => {
+  return request({
+    url: '/hqcc/apiH5.php?r=detail/getatlasimglist&id=98896&uniqueKey=9437e991334dd188de927d76f62b1fcb&token=&userId=&userPKey=1588233664000&userPMain=30&userPBase=415224487&userUser=i9qye382ffkese86u',
+    method: 'GET'
+  })
+}
+
+export const getRecommend = () => {
+  return request({
+    url: '/hqcc/apiH5.php?r=detail/getpainterrelationatlas&id=98896&userPKey=1588236723000&userPMain=49&userPBase=254219563&userUser=i9r130eisa46',
+    method: 'GET'
+  })
+}
+
+export const getLikeness = () => {
+  return request({
+    url: '/hqcc/apiH5.php?r=detail/getpainterrelationatlas&id=98896&userPKey=1588237184000&userPMain=24&userPBase=519031759&userUser=i9r130eisa95',
+    method: 'GET'
+  })
+}

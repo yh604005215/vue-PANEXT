@@ -46,7 +46,7 @@ export default {
   data () {
     return {
       active: 1,
-      value: '',
+      value: this.$route.query.text ? this.$route.query.text : '',
       videoList: [],
       eikonLeft: [],
       eikonRight: [],
@@ -78,7 +78,7 @@ export default {
         this.rHeight = 0
         const data = res.data.list
         console.log(res)
-        if (data.length > 0) {
+        if (data && data.length > 0) {
           data.forEach(item => {
             if (this.lHeight <= this.rHeight) {
               this.lHeight += ~~item.coverHeight
