@@ -209,3 +209,11 @@ export const getLikeness = () => {
     method: 'GET'
   })
 }
+
+// 登录页图片数据
+export const getLoginPicture = () => {
+  return request({
+    url: '/hqcc/apiH5.php?r=login/getbackground&userPKey=1588238869000&userPMain=72&userPBase=173010770&userUser=uK880P7re1',
+    method: 'GET'
+  })
+}

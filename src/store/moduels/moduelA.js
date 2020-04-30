@@ -1,6 +1,7 @@
 const state = {
   type: 1,
-  content: ''
+  content: '',
+  isLogin: true
 }
 
 const mutations = {
@@ -9,6 +10,9 @@ const mutations = {
   },
   SET_CONTENT (state, payload) {
     state.content = payload
+  },
+  SET_ISLOGIN (state, payload) {
+    state.isLogin = payload
   }
 }
 export default {

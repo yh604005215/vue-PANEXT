@@ -43,21 +43,22 @@
     </div>
     <div class="col itemmenu ivu-col ivu-col-span-24 user-btn">
       <button type="button" class="ivu-btn ivu-btn-default ivu-btn-long ivu-btn-circle">
-        <span v-if="!isLogin">个人中心</span>
-        <span v-if="isLogin">登陆/注册</span>
+        <router-link to="/register" v-if="!isLogin">个人中心</router-link>
+        <router-link to="/login" v-if="isLogin">登陆/注册</router-link>
       </button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'MyMenu',
-  props: {
-    isLogin: {
-      type: Boolean,
-      default: false
-    }
+  computed: {
+    ...mapState('moduelA', ['isLogin'])
+  },
+  methods: {
+    ...mapMutations('moduelA', ['SET_ISLOGIN'])
   }
 }
 </script>
