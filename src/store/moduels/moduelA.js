@@ -12,8 +12,13 @@ const mutations = {
   SET_CONTENT (state, payload) {
     state.content = payload
   },
-  SET_TOKEN (state, payload) {
-    state.token = payload
+  SET_TOKEN () {
+    const token = window.localStorage.getItem('token')
+    if (token) {
+      state.token = token
+    } else {
+      state.token = null
+    }
   }
 }
 export default {

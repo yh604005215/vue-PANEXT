@@ -61,10 +61,7 @@ export default {
     ...mapMutations('moduelA', ['SET_TOKEN'])
   },
   created () {
-    const token = window.localStorage.getItem('token')
-    if (token) {
-      this.SET_TOKEN(token)
-    }
+    this.SET_TOKEN()
   }
 }
 </script>
