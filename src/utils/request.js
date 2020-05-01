@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: process.env.NODE_ENV === 'production' ? 'http://106.52.239.202/' : 'http://localhost:8080',
   timeout: 5000
 })
 

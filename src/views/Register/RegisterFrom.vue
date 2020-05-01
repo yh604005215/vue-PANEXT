@@ -63,7 +63,9 @@
         <div class="ivu-divider ivu-divider-horizontal ivu-divider-with-text ivu-divider-with-text-center"><span class="ivu-divider-inner-text">
           <van-button type="primary"
           size="small"
-          @click="getRegister(email, password, eCode)">注册</van-button>
+          @click="getRegister({
+            email, password, sex, eCode
+          })">注册</van-button>
           </span>
         </div>
       </div>
@@ -91,12 +93,12 @@ export default {
     }
   },
   methods: {
-    getRegister (email, password, eCode) {
+    getRegister (info) {
       if (this.password !== this.password2) {
         Notify('密码不一致')
         return
       }
-      getRegister(email, password, eCode).then(res => {
+      getRegister(info).then(res => {
         this.$router.push({
           name: 'login',
           params: {

@@ -18,14 +18,15 @@ export const getEmailCode = (email) => {
 /**
  * 注册
  */
-export const getRegister = (email, password, eCode) => {
+export const getRegister = (info) => {
   return $axios({
     url: '/pnext/register',
     method: 'POST',
     data: {
-      email,
-      password,
-      eCode,
+      email: info.email,
+      password: info.password,
+      eCode: info.eCode,
+      sex: info.sex,
       time: new Date().getTime()
     }
   })

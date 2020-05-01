@@ -5,7 +5,7 @@ import { Notify } from 'vant'
 
 Vue.use(Notify)
 const instance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: process.env.NODE_ENV === 'production' ? 'http://106.52.239.202/' : 'http://localhost:3000',
   timeout: 5000
 })
 
