@@ -30,7 +30,7 @@ const router = new VueRouter({
     { path: '/picture-class', component: PictureClass },
     { path: '/detail', component: Detail },
     { path: '/taobao', component: Taobao },
-    { path: '/login', component: Login },
+    { path: '/login', name: 'login', component: Login },
     { path: '/register', component: Register },
     { path: '/forget', component: Forget },
     { path: '/user', component: User },

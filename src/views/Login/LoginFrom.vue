@@ -2,13 +2,17 @@
   <div class="from">
     <div class="input-box">
       <input type="text"
-      placeholder="请输入邮箱\手机号">
+      placeholder="请输入邮箱\手机号" name="email"
+      v-model="email">
     </div>
     <div class="input-box">
       <input type="password"
-      placeholder="请输入密码">
+      placeholder="请输入密码"
+      name="password"
+      v-model="password">
     </div>
-    <button class="login">登录</button>
+    <button class="login"
+    @click="onSubmit">登录</button>
     <div class="sub-box">
       <div>
         <router-link class="btn forget" to="forget">忘记密码</router-link>
@@ -21,18 +25,22 @@
 </template>
 
 <script>
-
+import { getLogin } from '@/api/getUser'
 export default {
   name: 'LoginFrom',
   data () {
     return {
-      username: '',
-      password: ''
+      email: this.$route.params.email ? this.$route.params.email : '',
+      password: this.$route.params.password ? this.$route.params.password : ''
     }
   },
   methods: {
-    onSubmit (values) {
-      console.log('submit', values)
+    onSubmit () {
+      getLogin(this.email, this.password).then(res => {
+        console.log(res)
+        window.localStorage.setItem('token', res.token)
+        this.$router.push({ path: '/home' })
+      })
     }
   }
 }

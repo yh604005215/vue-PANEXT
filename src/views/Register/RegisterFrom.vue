@@ -28,33 +28,42 @@
         邮箱:
         <input type="text"
         class="input-content"
-        placeholder="请输入正确邮箱">
+        placeholder="请输入正确邮箱"
+        name="user-email"
+        v-model="email">
       </div>
       <div class="from-box">
         验证码：
         <input type="text"
         class="input-content code"
-        placeholder="请输入邮箱验证码">
-        <van-button type="primary" size="small">
-          发送
+        placeholder="请输入邮箱验证码"
+        v-model="eCode"
+        name="code">
+        <van-button type="primary" size="small"
+        @click="getEmailCode(email)">
+          {{ time }}
         </van-button>
       </div>
       <div class="from-box">
           密码:
           <input type="password"
           class="input-content"
-          placeholder="请输入密码">
+          placeholder="请输入密码"
+          v-model="password"
+          name="password">
       </div>
       <div class="from-box">
           确认密码:
           <input type="password"
           class="input-content"
-          placeholder="请再次输入密码">
+          placeholder="请再次输入密码"
+          v-model="password2">
       </div>
       <div class="register">
         <div class="ivu-divider ivu-divider-horizontal ivu-divider-with-text ivu-divider-with-text-center"><span class="ivu-divider-inner-text">
           <van-button type="primary"
-          size="small">注册</van-button>
+          size="small"
+          @click="getRegister(email, password, eCode)">注册</van-button>
           </span>
         </div>
       </div>
@@ -64,15 +73,59 @@
 
 <script>
 import Vue from 'vue'
-import { Button } from 'vant'
-
+import { Button, Notify } from 'vant'
+import { getRegister, getEmailCode } from '@/api/getUser'
+Vue.use(Notify)
 Vue.use(Button)
 export default {
   name: 'RegisterFrom',
   data () {
     return {
       sex: '男',
-      active: 1
+      active: 1,
+      eCode: '',
+      email: '',
+      password: '',
+      password2: '',
+      time: '发送'
+    }
+  },
+  methods: {
+    getRegister (email, password, eCode) {
+      if (this.password !== this.password2) {
+        Notify('密码不一致')
+        return
+      }
+      getRegister(email, password, eCode).then(res => {
+        this.$router.push({
+          name: 'login',
+          params: {
+            email: this.email,
+            password: this.password
+          }
+        })
+      })
+    },
+    getEmailCode (email) {
+      getEmailCode(email).then(res => {
+        Notify({ type: 'primary', message: '已发送' })
+        this.countDown(res)
+      }).catch(res => {
+        console.log(res)
+        if (res.ms) {
+          this.countDown(res)
+        }
+      })
+    },
+    countDown (res) {
+      this.time = res.ms
+      const timer = setInterval(() => {
+        this.time--
+        if (this.time === 0) {
+          clearInterval(timer)
+          this.time = '发送'
+        }
+      }, 1000)
     }
   }
 }
