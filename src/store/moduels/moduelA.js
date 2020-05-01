@@ -1,7 +1,8 @@
 const state = {
   type: 1,
   content: '',
-  isLogin: true
+  isLogin: true,
+  token: null
 }
 
 const mutations = {
@@ -11,8 +12,8 @@ const mutations = {
   SET_CONTENT (state, payload) {
     state.content = payload
   },
-  SET_ISLOGIN (state, payload) {
-    state.isLogin = payload
+  SET_TOKEN (state, payload) {
+    state.token = payload
   }
 }
 export default {

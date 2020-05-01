@@ -43,22 +43,28 @@
     </div>
     <div class="col itemmenu ivu-col ivu-col-span-24 user-btn">
       <button type="button" class="ivu-btn ivu-btn-default ivu-btn-long ivu-btn-circle">
-        <router-link to="/register" v-if="!isLogin">个人中心</router-link>
-        <router-link to="/login" v-if="isLogin">登陆/注册</router-link>
+        <router-link to="/register" v-if="token">个人中心</router-link>
+        <router-link to="/login" v-if="!token">登陆/注册</router-link>
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'MyMenu',
   computed: {
-    ...mapState('moduelA', ['isLogin'])
+    ...mapState('moduelA', ['token'])
   },
   methods: {
-    ...mapMutations('moduelA', ['SET_ISLOGIN'])
+    ...mapMutations('moduelA', ['SET_TOKEN'])
+  },
+  created () {
+    const token = window.localStorage.getItem('token')
+    if (token) {
+      this.SET_TOKEN(token)
+    }
   }
 }
 </script>
